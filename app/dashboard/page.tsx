@@ -1,13 +1,11 @@
 import React from 'react'
+import EmployeesLocation from './@locations/_components/EmployeesLocation'
 
-const Dashboard = () => {
+const Dashboard = ({searchParams} : {searchParams: {[key: string] : string | string[] | undefined}}) => {
   return (
     <>
-        <div className='h-full w-1/2 bg-rose-300'>
-            <p>Section 1</p>
-        </div>
-        <div className='h-full w-4/12 bg-rose-500'>
-            <p>Section 2</p>
+        <div className='h-full w-5/12 bg-rose-300'>
+            <EmployeesLocation/>
         </div>
     </>
   )
