@@ -1,18 +1,22 @@
 
 "use server"
 
-import { API_URL, TOKEN_NAME } from "@/constants"
+import { API_URL } from "@/constants"
 import authHeaders from "@/helpers/authHeaders"
-import axios from "axios"
+import { revalidateTag } from "next/cache"
+import { redirect } from "next/navigation"
 
 const deleteLocation = async (formData : FormData) => {
     const locationId = formData.get("deleteValue")
     if (!locationId) return
-    axios.delete(`${API_URL}/locations/${locationId}`, {
+    fetch(`${API_URL}/locations/${locationId}`, {
+        method: "DELETE",
         headers: {
             ...authHeaders()
         }
     })
+    revalidateTag("dashboard:locations")
+    redirect("/")
 }
 
 export default deleteLocation

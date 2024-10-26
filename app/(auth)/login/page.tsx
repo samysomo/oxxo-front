@@ -1,7 +1,7 @@
 "use client"
 import { API_URL } from '@/constants'
+import authHeaders from '@/helpers/authHeaders'
 import { Button, Input, Spinner } from '@nextui-org/react'
-import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
@@ -18,7 +18,11 @@ const Login = () => {
         authData.userEmail = formData.get("userEmail")
         authData.userPassword = formData.get("userPassword")
         try {
-            const response = await axios.post(`${API_URL}/auth/login`, {...authData} , {withCredentials: true})
+            const response = await fetch(`${API_URL}/auth/login`, {
+                method: "POST",
+                body: JSON.stringify(authData),
+                credentials: "include"
+            })
             if (response.status === 201) router.push("/dashboard")
         } catch (error) {
             console.log(error)

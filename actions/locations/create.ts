@@ -1,8 +1,9 @@
  "use server"
 
-import { API_URL, TOKEN_NAME } from "@/constants"
+import { API_URL } from "@/constants"
 import authHeaders from "@/helpers/authHeaders"
-import axios from "axios"
+import { revalidateTag } from "next/cache"
+import { redirect } from "next/navigation"
 
 export async function createLocation(formData : FormData){
     let location : any = {}
@@ -21,9 +22,17 @@ export async function createLocation(formData : FormData){
     }
     location.locationLatling = locationLatling
     
-    await axios.post(`${API_URL}/locations`, location, {
-        headers : {
+    const response = await fetch(`${API_URL}/locations`, {
+        method: "POST",
+        body: JSON.stringify(location),
+        headers: {
+            "content-type" : "application/json",
             ...authHeaders()
         }
     })
+    const data = await response.json()
+    if(response.status === 201) {
+        revalidateTag("dashboard:locations")
+        redirect(`/dashboard?store=${data.locationId}`)
+    }
 }
