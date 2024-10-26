@@ -4,7 +4,7 @@ type LocationEntity = {
     locationName: string;
     locationAddress: string;
     locationLatling: number[];
-    manager?: any
+    manager?: Manager
     region?: any
     employees?: Employee[]
 }
@@ -16,6 +16,16 @@ type Employee = {
     employeePhoneNumber: string;
     employeeEmail: string;
     employeePhoto?: string;
+    location?: Location
+    user?: any
+}
+
+type Manager = {
+    managerId: string;
+    managerFullName: string;
+    managerSalary: number;
+    managerEmail: string;
+    managerPhoneNumber: string;
     location?: Location
     user?: any
 }
