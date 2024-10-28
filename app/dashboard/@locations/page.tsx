@@ -29,7 +29,7 @@ const LocationsPage = async ({searchParams} : {searchParams: {[key: string] : st
             {searchParams.store ? (
               <>
                 <LocationCard store={searchParams.store}/>
-                <div className='w-full flex justify-end mt-5'>
+                <div className='w-full flex justify-end mt-5 gap-5'>
                   <DeleteLocationButton store={searchParams.store}/>
                   <UpdateLocation>
                     <FormUpdateLocation store={searchParams.store}/>

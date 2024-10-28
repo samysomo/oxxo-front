@@ -10,10 +10,10 @@ type SelectManagerProps = {
 
 const SelectManager = ({managers, locations, defaultManager} : SelectManagerProps) => {
     const disabledKeys = locations.map((location: LocationEntity) => {
-        return location.manager?.managerId
+        if(location.manager?.managerId !== defaultManager) return location.manager?.managerId
     }).filter((managerId) => managerId !== undefined)
   return (
-    <Select name='manager' label="Manager" disabledKeys={disabledKeys} defaultSelectedKeys={defaultManager}>
+    <Select name='manager' label="Manager" disabledKeys={disabledKeys} defaultSelectedKeys={defaultManager !== undefined ? [defaultManager] : []}>
         {managers.map((manager : Manager) => (
             <SelectItem key={manager.managerId}>
                 {manager.managerFullName}
