@@ -4,7 +4,6 @@ import React from 'react'
 import SelectManager from './SelectManager'
 import authHeaders from '@/helpers/authHeaders'
 import { updateLocation } from '@/actions/locations/update'
-import { object } from 'framer-motion/client'
 
 const FormUpdateLocation = async({store} : {store: string | string[] | undefined}) => {
     if(!store || store === undefined || typeof store === "object") return null

@@ -16,7 +16,7 @@ type Employee = {
     employeePhoneNumber: string;
     employeeEmail: string;
     employeePhoto?: string;
-    location?: Location
+    location?: LocationEntity
     user?: any
 }
 
@@ -26,6 +26,6 @@ type Manager = {
     managerSalary: number;
     managerEmail: string;
     managerPhoneNumber: string;
-    location?: Location
+    location?: LocationEntity
     user?: any
 }
