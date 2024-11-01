@@ -13,6 +13,9 @@ export async function updateManager(id: string, formData : FormData){
             manager[key] = formData.get(key)
         }
     }
+    manager.managerSalary = Number(manager.managerSalary)
+    if (!manager.location) delete manager.location
+    manager.location = Number(manager.location)
     
     const response = await fetch(`${API_URL}/managers/${id}`, {
         method: "PATCH",
@@ -22,10 +25,12 @@ export async function updateManager(id: string, formData : FormData){
             ...authHeaders()
         }
     })
+
     const data : Manager = await response.json()
+
     if(response.status === 200) {
         revalidateTag("dashboard:managers")
         revalidateTag(`dashboard:managers:${id}`)
-        redirect(`/dashboard?store=${data.managerId}`)
+        redirect(`/dashboard/managers`)
     }
 }

@@ -4,10 +4,8 @@ import ManagerCard from "./_components/ManagerCard";
 
 export default async function ManagersLayout({
     children,
-    count
   }: Readonly<{
     children: React.ReactNode,
-    count : React.ReactNode
   }>) {
     const response = await fetch(`${API_URL}/managers`, {
         headers: {...authHeaders()},
@@ -34,7 +32,6 @@ export default async function ManagersLayout({
             <div className="w-6/12 ">
                 <div className="w-full flex flex-col items-center justify-center">
                     <div className="w-10/12">{children}</div>
-                    <div className="">{count}</div>
                 </div>
             </div>
         </>

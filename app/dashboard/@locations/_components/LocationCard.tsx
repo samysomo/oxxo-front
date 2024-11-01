@@ -22,7 +22,7 @@ const LocationCard = async ({store}: {store: string | string[] | undefined}) => 
         </CardHeader>
         <Divider/>
         <CardBody>
-            <p className='w-full text-black'>Manager: <Link href={`/dashboard/managers/${storeData.manager?.managerId}`}><b>{storeData.manager?.managerFullName}</b></Link></p>
+            <p className='w-full text-black'>Manager: <Link href={`/dashboard/managers/${storeData.manager?.managerId}`}><b className='hover:underline'>{storeData.manager?.managerFullName}</b></Link></p>
             <p className='w-full text-black'>Manager: <b>{storeData.locationAddress}</b></p>
         </CardBody>
     </Card>

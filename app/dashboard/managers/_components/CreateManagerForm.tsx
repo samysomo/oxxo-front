@@ -4,7 +4,7 @@ import React from 'react'
 import authHeaders from '@/helpers/authHeaders'
 import { createManager } from '@/actions/managers/create'
 
-const FormNewLocation = async() => {
+const CreateManagerForm = async() => {
 
   const responseLocations = await fetch(`${API_URL}/locations`, {
     headers: {
@@ -26,4 +26,4 @@ const FormNewLocation = async() => {
   )
 }
 
-export default FormNewLocation
+export default CreateManagerForm
