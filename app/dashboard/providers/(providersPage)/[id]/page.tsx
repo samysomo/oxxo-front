@@ -1,7 +1,10 @@
 import { API_URL } from '@/constants'
 import authHeaders from '@/helpers/authHeaders'
 import React from 'react'
-import ProviderCard from '../_components/ProviderCard'
+import ProviderCard from '../../_components/ProviderCard'
+import UpdateProviderModal from '../../_components/UpdateProviderModal'
+import UpdateProviderForm from '../../_components/UpdateProviderForm'
+import DeleteProviderButton from '../../_components/DeleteProviderButton'
 
 const ProviderPage = async({params} : {params: {id : string}}) => {
   const response = await fetch(`${API_URL}/providers/${params.id}`, {
@@ -17,10 +20,10 @@ const ProviderPage = async({params} : {params: {id : string}}) => {
         <ProviderCard provider={providerData} full={true} hover={false} main={true}/>
       </div>
       <div className='w-full flex justify-end px-10 py-5 gap-5'>
-        {/* <UpdateProviderModal>
+        <UpdateProviderModal>
           <UpdateProviderForm provider={providerData}/>
         </UpdateProviderModal>
-        <DeleteProviderButton id={providerData.providerId}/> */}
+        <DeleteProviderButton id={providerData.providerId}/>
       </div>
     </div>
   )
