@@ -2,13 +2,13 @@ import deleteProvider from '@/actions/providers/delete'
 import { Button } from '@nextui-org/react'
 import React from 'react'
 
-const DeleteProviderButton = ({id} : {id: string | string[]}) => {
+const DeleteProviderForm = ({provider} : {provider: Provider}) => {
+  const deleteProviderWithId = deleteProvider.bind(null, provider.providerId)
   return (
-    <form action={deleteProvider}>
+    <form action={deleteProviderWithId}>
+        <h1 className='text-center text-2xl p-5'>¿Estás seguro de eliminar al provedor <b>{provider.providerName}</b>?</h1>
         <Button 
             className='bg-rose-700 text-white font-bold w-full'
-            name='deleteValue'
-            value={id}
             type='submit'
         >
         Eliminar Proveedor
@@ -18,4 +18,4 @@ const DeleteProviderButton = ({id} : {id: string | string[]}) => {
   )
 }
 
-export default DeleteProviderButton
+export default DeleteProviderForm

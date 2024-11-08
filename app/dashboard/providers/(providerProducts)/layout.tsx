@@ -8,7 +8,7 @@ export default async function ProviderProductsLayout({
   }>) {
 
     return (
-      <main className="h-[90vh] w-full flex justify-center">
+      <main className="h-[90vh] w-10/12 flex justify-center">
           {children}
       </main>
     );

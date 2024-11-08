@@ -5,7 +5,8 @@ import ProviderCard from '../../../_components/ProviderCard'
 import ProviderProductCard from '../../../_components/ProviderProductCard'
 import UpdateProviderModal from '../../../_components/UpdateProviderModal'
 import UpdateProviderForm from '../../../_components/UpdateProviderForm'
-import DeleteProviderButton from '../../../_components/DeleteProviderButton'
+import DeleteProviderForm from '../../../_components/DeleteProviderButton'
+import DeleteProviderModal from '../../../_components/DeleteProviderModal'
 
 const ProviderProductsPage = async({params} : {params: {id : string}}) => {
   const response = await fetch(`${API_URL}/providers/${params.id}`, {
@@ -17,7 +18,7 @@ const ProviderProductsPage = async({params} : {params: {id : string}}) => {
   const providerData : Provider = await response.json()
   return (
     <div className='w-full flex flex-col h-full'>
-        <div className='flex w-11/12'>
+        <div className='flex w-10/12'>
             <div className='w-[500px]'>
                 <ProviderCard provider={providerData} full={true} hover={false} main={true}/>
             </div>
@@ -25,7 +26,9 @@ const ProviderProductsPage = async({params} : {params: {id : string}}) => {
                 <UpdateProviderModal>
                     <UpdateProviderForm provider={providerData}/>
                 </UpdateProviderModal>
-                <DeleteProviderButton id={providerData.providerId}/>
+                <DeleteProviderModal>
+                  <DeleteProviderForm provider={providerData}/>
+                </DeleteProviderModal>
             </div>
         </div>
       <div className='h-1 bg-rose-500 m-5 w-11/12'></div>

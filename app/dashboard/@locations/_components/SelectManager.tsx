@@ -13,9 +13,9 @@ const SelectManager = ({managers, locations, defaultManager} : SelectManagerProp
         if(location.manager?.managerId !== defaultManager) return location.manager?.managerId
     }).filter((managerId) => managerId !== undefined)
   return (
-    <Select name='manager' label="Manager" disabledKeys={disabledKeys} defaultSelectedKeys={defaultManager !== undefined ? [defaultManager] : []}>
+    <Select className='text-black' name='manager' label="Manager" disabledKeys={disabledKeys} defaultSelectedKeys={defaultManager !== undefined ? [defaultManager] : []}>
         {managers.map((manager : Manager) => (
-            <SelectItem key={manager.managerId}>
+            <SelectItem className='text-black' key={manager.managerId}>
                 {manager.managerFullName}
             </SelectItem>
         ))}

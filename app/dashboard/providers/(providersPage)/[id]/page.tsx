@@ -4,7 +4,8 @@ import React from 'react'
 import ProviderCard from '../../_components/ProviderCard'
 import UpdateProviderModal from '../../_components/UpdateProviderModal'
 import UpdateProviderForm from '../../_components/UpdateProviderForm'
-import DeleteProviderButton from '../../_components/DeleteProviderButton'
+import DeleteProviderModal from '../../_components/DeleteProviderModal'
+import DeleteProviderForm from '../../_components/DeleteProviderButton'
 
 const ProviderPage = async({params} : {params: {id : string}}) => {
   const response = await fetch(`${API_URL}/providers/${params.id}`, {
@@ -23,7 +24,9 @@ const ProviderPage = async({params} : {params: {id : string}}) => {
         <UpdateProviderModal>
           <UpdateProviderForm provider={providerData}/>
         </UpdateProviderModal>
-        <DeleteProviderButton id={providerData.providerId}/>
+        <DeleteProviderModal>
+          <DeleteProviderForm provider={providerData}/>
+        </DeleteProviderModal>
       </div>
     </div>
   )

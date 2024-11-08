@@ -5,18 +5,18 @@ import authHeaders from "@/helpers/authHeaders"
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
 
-const deleteProvider = async (id : string) => {
-    const response = await fetch(`${API_URL}/providers/${id}`, {
+const deleteProduct = async (id: string) => {
+    const response = await fetch(`${API_URL}/products/${id}`, {
         method: "DELETE",
         headers: {
             ...authHeaders()
         }
     })
     if (response.status === 200) {
-        revalidateTag("dashboard:providers")
-        redirect("/dashboard/providers")
+        revalidateTag("dashboard:products")
+        redirect("/dashboard/products")
     }
     
 }
 
-export default deleteProvider
+export default deleteProduct
