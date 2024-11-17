@@ -1,10 +1,12 @@
 import { API_URL } from '@/constants'
 import authHeaders from '@/helpers/authHeaders'
 import React from 'react'
-import EmployeeCard from './_components/EmployeeCard'
+import CreateEmployeeModal from './_components/CreateEmployeeModal'
+import CreateEmployeeForm from './_components/CreateEmployeeForm'
+import EmployeeList from './_components/EmployeeList'
 
 const EmployeesPage = async () => {
-  const response = await fetch(`${API_URL}/employees`, {
+  const responseEmployees = await fetch(`${API_URL}/employees`, {
     headers: {
       ...authHeaders()
     },
@@ -13,14 +15,27 @@ const EmployeesPage = async () => {
     }
   }
   )
-  const employees : Employee[] = await response.json()
+  const employees : Employee[] = await responseEmployees.json()
+
+  const responseLocations = await fetch(`${API_URL}/locations`, {
+    headers: {
+      ...authHeaders()
+    },
+    next: {
+      tags: ["dashboard:locations"]
+    }
+  }
+  )
+  const locations : LocationEntity[] = await responseLocations.json()
 
   return (
-    <div className='w-full flex items-center justify-center mx-20'>
-      <div className='w-full grid grid-cols-6 gap-x-10'>
-        {employees.map((employee) => (
-          <EmployeeCard employee={employee} full={false} hover={true} main={false}/>
-        ))}</div>
+    <div className='w-full h-[90vh] flex flex-col items-center justify-start overflow-hidden overflow-y-auto'>
+      <div className="absolute z-0 right-10 top-24">
+        <CreateEmployeeModal>
+          <CreateEmployeeForm/>
+        </CreateEmployeeModal>
+      </div>
+      <EmployeeList employees={employees} locations={locations}/>
     </div>
   )
 }

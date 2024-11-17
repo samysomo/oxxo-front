@@ -25,7 +25,7 @@ const UpdateManagerForm = async({manager} : {manager : Manager}) => {
       <Input required={true} defaultValue={manager.managerEmail} label="Email" name='managerEmail' placeholder='correo@correo.copm'/>
       <Input required={true} defaultValue={manager.managerPhoneNumber} label="Telefono" name='managerPhoneNumber' placeholder='442123123'/>
       <Input required={true} defaultValue={manager.managerSalary.toString()} label="Salario" name='managerSalary' placeholder='70000'/>
-      <SelectStore stores={locationsData} defaultStore={manager.location?.locationId}/>
+      <SelectStore stores={locationsData} defaultStore={manager.location?.locationId} notDisabled={false}/>
       <Button className='bg-rose-700 text-white' type="submit">Actualizar Manager</Button>
     </form>
   )

@@ -1,3 +1,4 @@
+"use server"
 import { TOKEN_NAME } from "@/constants"
 import { cookies } from "next/headers"
 import { cache } from "react"

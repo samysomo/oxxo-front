@@ -21,7 +21,7 @@ const SelectLocation = ({locations, store} : {locations : LocationEntity[], stor
         })}
     >
         {locations.map((location: LocationEntity) => (
-            <SelectItem key={location.locationId} value={location.locationId}>
+            <SelectItem key={location.locationId} value={location.locationId} className='text-black'>
                 {location.locationName}
             </SelectItem>
         ))}
