@@ -1,20 +1,19 @@
 "use client"
 import {Modal, ModalContent, ModalBody, Button, useDisclosure} from "@nextui-org/react";
-import { LuTrash2 } from "react-icons/lu";
+import { LuLogIn, LuPaperclip, LuPlus } from "react-icons/lu";
 
-export default function DeleteProductModal({children} : {children : React.ReactNode}) {
+export default function RegisterEmployeeModal({children} : {children : React.ReactNode}) {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   return (
     <>
-      <Button onPress={onOpen} className="bg-rose-700 text-white font-bold">Eliminar <LuTrash2/></Button>
+      <Button onPress={onOpen} className="bg-rose-600 text-white font-bold">Registrar <LuLogIn/></Button>
       <Modal className="bg-rose-500" isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent className="w-full">
           {(onClose) => (
             <>
               <ModalBody>
                 {children}
-                <Button onPress={onClose}>Cancelar</Button>
               </ModalBody>
             </>
           )}

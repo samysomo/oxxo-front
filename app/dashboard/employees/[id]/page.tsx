@@ -2,10 +2,6 @@ import { API_URL } from '@/constants'
 import authHeaders from '@/helpers/authHeaders'
 import React from 'react'
 import EmployeeCard from '../_components/EmployeeCard'
-import UpdateEmployeeModal from '../_components/UpdateEmployeeModal'
-import UpdateEmployeeForm from '../_components/UpdateEmployeeForm'
-import DeleteEmployeeModal from '../_components/DeleteEmployeeModal'
-import DeleteEmployeeForm from '../_components/DeleteEmployeeForm'
 
 const EmployeePage = async ({params} : {params: {id : string}}) => {
   const response = await fetch(`${API_URL}/employees/${params.id}`, {

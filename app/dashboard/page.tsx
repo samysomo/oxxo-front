@@ -1,7 +1,9 @@
 import React from 'react'
 import EmployeesLocation from './@locations/_components/EmployeesLocation'
+import { getUserRoles } from '@/helpers/getUserRoles'
 
 const Dashboard = ({searchParams} : {searchParams: {[key: string] : string | string[] | undefined}}) => {
+  const userRole = getUserRoles()
   return (
     <>
         <div className='h-full w-5/12 bg-rose-300'>
@@ -9,7 +11,7 @@ const Dashboard = ({searchParams} : {searchParams: {[key: string] : string | str
             {searchParams.store ? (
               <EmployeesLocation store={searchParams?.store}/>
             ) : (
-              <h2 className='text-3xl text-center font-bold mt-10'>Selecciona una tienda para ver los empleados</h2>
+              <h2 className='text-3xl text-center font-bold mt-10'>Selecciona una tienda {userRole[0] !== "Employee" && "para ver los empleados"} </h2>
             )}
             
           </div>

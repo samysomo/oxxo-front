@@ -3,6 +3,7 @@ import { Button, Input } from '@nextui-org/react'
 import React from 'react'
 import authHeaders from '@/helpers/authHeaders'
 import { createManager } from '@/actions/managers/create'
+import SelectStore from './SelectStore'
 
 const CreateManagerForm = async() => {
 
@@ -21,6 +22,7 @@ const CreateManagerForm = async() => {
       <Input required={true} label="Email" name='managerEmail' placeholder='correo@correo.com'/>
       <Input required={true} label="Telefono" name='managerPhoneNumber' placeholder='442123123'/>
       <Input required={true} label="Salario" name='managerSalary' placeholder='70000'/>
+      <SelectStore stores={locationsData} notDisabled={false}/>
       <Button className='bg-rose-700 text-white' type="submit">Crear Manager</Button>
     </form>
   )

@@ -45,3 +45,12 @@ type Product = {
     countSeal: number;
     provider: Provider;
 }
+
+type User = {
+    userId : string;
+    userEmail: string;
+    userPassword : string;
+    userRoles: string[];
+    manager: Manager
+    employee: Employee
+}

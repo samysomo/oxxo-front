@@ -6,8 +6,10 @@ import UpdateProductModal from '../_components/UpdateProductModal'
 import UpdateProductForm from '../_components/UpdateProductForm'
 import DeleteProductModal from '../_components/DeleteProductModal'
 import DeleteProductForm from '../_components/DeleteProductForm'
+import { getUserRoles } from '@/helpers/getUserRoles'
 
 const ProductPage = async ({params} : {params: {id : string}}) => {
+  const userRole = getUserRoles()
   const response = await fetch(`${API_URL}/products/${params.id}`, {
     headers: {...authHeaders()},
     next: {
@@ -33,9 +35,12 @@ const ProductPage = async ({params} : {params: {id : string}}) => {
         <UpdateProductModal>
           <UpdateProductForm product={productData} providers={providers}/>
         </UpdateProductModal>
-        <DeleteProductModal>
-          <DeleteProductForm product={productData}/>
-        </DeleteProductModal>
+        {userRole[0] !== "Employee" && (
+          <DeleteProductModal>
+            <DeleteProductForm product={productData}/>
+          </DeleteProductModal>
+        )}
+        
       </div>
     </div>
   )

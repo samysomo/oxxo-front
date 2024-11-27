@@ -3,12 +3,14 @@ import authHeaders from "@/helpers/authHeaders";
 import ProviderCard from "../_components/ProviderCard";
 import CreateProviderModal from "../_components/CreateProviderModal";
 import CreateProviderForm from "../_components/CreateProviderForm";
+import { getUserRoles } from "@/helpers/getUserRoles";
 
 export default async function ProvidersLayout({
     children,
   }: Readonly<{
     children: React.ReactNode,
   }>) {
+    const userRole = getUserRoles()
     const response = await fetch(`${API_URL}/providers`, {
         headers: {...authHeaders()},
         next: {
@@ -26,11 +28,13 @@ export default async function ProvidersLayout({
                 ))}
             </div>
             <div className="w-6/12">
-              <div className="absolute z-0 right-10 top-24">
-                <CreateProviderModal>
-                  <CreateProviderForm/>
-                </CreateProviderModal>
-              </div>
+              {userRole[0] !== "Employee" && (
+                <div className="absolute z-0 right-10 top-24">
+                  <CreateProviderModal>
+                    <CreateProviderForm/>
+                  </CreateProviderModal>
+                </div>
+              )}
               <div className="w-full flex flex-col items-center justify-center">
                   <div className="w-10/12">{children}</div>
               </div>

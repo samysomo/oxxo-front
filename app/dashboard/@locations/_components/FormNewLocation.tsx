@@ -4,8 +4,12 @@ import { Button, Input } from '@nextui-org/react'
 import React from 'react'
 import SelectManager from './SelectManager'
 import authHeaders from '@/helpers/authHeaders'
+import { getUserRoles } from '@/helpers/getUserRoles'
 
 const FormNewLocation = async() => {
+  const userRole = getUserRoles()
+
+  if (userRole[0] !== "Admin" ) return null
   const responseManager = await fetch(`${API_URL}/managers`, {
     headers: {
       ...authHeaders()

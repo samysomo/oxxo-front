@@ -5,8 +5,19 @@ import ManagerCard from '../_components/ManagerCard'
 import DeleteManagerButton from '../_components/DeleteManagerButton'
 import UpdateManagerModal from '../_components/UpdateManagerModal'
 import UpdateManagerForm from '../_components/UpdateManagerForm'
+import RegisterManagerModal from '../_components/RegisterManagerModal'
+import RegisterManagerForm from '../_components/RegisterManagerForm'
+import ChangeManagerPasswordModal from '../_components/ChangeManagerPasswordModal'
+import ChangeManagerPasswordForm from '../_components/ChangeManagerPasswordForm'
+import { getUserRoles } from '@/helpers/getUserRoles'
 
 const ManagerPage = async ({params} : {params: {id : string}}) => {
+  const userRole = getUserRoles()
+  if (userRole[0] !== "Admin") return (
+    <div className='w-full flex items-center justify-center h-[50vh]'>
+      <h2 className='text-3xl font-bold'>No tienes acceso a esta ruta</h2>
+    </div>
+  )
   const response = await fetch(`${API_URL}/managers/${params.id}`, {
     headers: {...authHeaders()},
     next: {
@@ -16,15 +27,7 @@ const ManagerPage = async ({params} : {params: {id : string}}) => {
   const managerData : Manager = await response.json()
   return (
     <div className='w-full flex flex-col h-[50vh]'>
-      <div>
-        <ManagerCard manager={managerData} full={true} hover={false} main={true}/>
-      </div>
-      <div className='w-full flex justify-end px-10 py-5 gap-5'>
-        <UpdateManagerModal>
-          <UpdateManagerForm manager={managerData}/>
-        </UpdateManagerModal>
-        <DeleteManagerButton id={managerData.managerId}/>
-      </div>
+      <ManagerCard manager={managerData} full={true} hover={false} main={true}/>
     </div>
   )
 }

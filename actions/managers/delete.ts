@@ -14,6 +14,7 @@ const deleteManager = async (formData : FormData) => {
             ...authHeaders()
         }
     })
+    console.log(await response.json())
     if (response.status === 200) {
         revalidateTag("dashboard:managers")
         redirect("/dashboard/managers")

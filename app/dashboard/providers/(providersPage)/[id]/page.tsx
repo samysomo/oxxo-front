@@ -6,8 +6,10 @@ import UpdateProviderModal from '../../_components/UpdateProviderModal'
 import UpdateProviderForm from '../../_components/UpdateProviderForm'
 import DeleteProviderModal from '../../_components/DeleteProviderModal'
 import DeleteProviderForm from '../../_components/DeleteProviderButton'
+import { getUserRoles } from '@/helpers/getUserRoles'
 
 const ProviderPage = async({params} : {params: {id : string}}) => {
+  const userRole = getUserRoles()
   const response = await fetch(`${API_URL}/providers/${params.id}`, {
     headers: {...authHeaders()},
     next: {
@@ -20,14 +22,17 @@ const ProviderPage = async({params} : {params: {id : string}}) => {
       <div>
         <ProviderCard provider={providerData} full={true} hover={false} main={true}/>
       </div>
-      <div className='w-full flex justify-end px-10 py-5 gap-5'>
-        <UpdateProviderModal>
-          <UpdateProviderForm provider={providerData}/>
-        </UpdateProviderModal>
-        <DeleteProviderModal>
-          <DeleteProviderForm provider={providerData}/>
-        </DeleteProviderModal>
-      </div>
+      {userRole[0] !== "Employee" && (
+        <div className='w-full flex justify-end px-10 py-5 gap-5'>
+          <UpdateProviderModal>
+            <UpdateProviderForm provider={providerData}/>
+          </UpdateProviderModal>
+          <DeleteProviderModal>
+            <DeleteProviderForm provider={providerData}/>
+          </DeleteProviderModal>
+        </div>
+      )}
+      
     </div>
   )
 }

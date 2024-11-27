@@ -1,12 +1,13 @@
 "use client"
 import {Modal, ModalContent, ModalBody, Button, useDisclosure} from "@nextui-org/react";
+import { LuTrash2 } from "react-icons/lu";
 
 export default function DeleteEmployeeModal({children} : {children : React.ReactNode}) {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   return (
     <>
-      <Button onPress={onOpen} className="bg-rose-700 text-white font-bold">Eliminar Empleado</Button>
+      <Button onPress={onOpen} className="bg-rose-700 text-white font-bold">Eliminar <LuTrash2/></Button>
       <Modal className="bg-rose-500" isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent className="w-full">
           {(onClose) => (

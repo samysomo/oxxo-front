@@ -26,7 +26,7 @@ const ProductsLayout = async ({children} : {children: React.ReactNode}) => {
     
       const providers : Provider[] = await responseProviders.json()
       return (
-        <div className='flex w-full'>
+        <div className='flex w-10/12'>
             <div className='h-[90vh] w-6/12'>
                 <div className=''>
                     <FilteredProducts products={products} providers={providers}/>

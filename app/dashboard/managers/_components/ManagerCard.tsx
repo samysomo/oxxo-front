@@ -1,10 +1,19 @@
-import { Card, CardBody, CardHeader, Divider } from '@nextui-org/react'
+import { Card, CardBody, CardFooter, CardHeader, Divider, user } from '@nextui-org/react'
 import Link from 'next/link'
 import React from 'react'
+import UpdateManagerModal from './UpdateManagerModal'
+import UpdateManagerForm from './UpdateManagerForm'
+import RegisterManagerModal from './RegisterManagerModal'
+import RegisterManagerForm from './RegisterManagerForm'
+import ChangeManagerPasswordModal from './ChangeManagerPasswordModal'
+import ChangeManagerPasswordForm from './ChangeManagerPasswordForm'
+import DeleteManagerButton from './DeleteManagerButton'
+import { getUserRoles } from '@/helpers/getUserRoles'
 
 const ManagerCard = ({manager, full, hover, main} : {manager: Manager, full: boolean, hover: boolean, main: boolean}) => {
+  const userRole = getUserRoles()
   return (
-    <Card className={`m-10 text-center ${hover ? "hover:scale-110 hover:bg-rose-200" : ""} ${main ? "text-3xl h-[40vh] my-5" : ""}`} key={manager.managerId}>
+    <Card className={`m-10 text-center ${hover ? "hover:scale-110 hover:bg-rose-200" : ""} ${main ? "text-3xl h-[40vh] w-[550px] my-5" : ""}`} key={manager.managerId}>
         <CardHeader>
             <Link className=' w-full text-center' href={`/dashboard/managers/${manager.managerId}`}>
               <p className={`w-full text-black`}><b>{manager.managerFullName}</b></p>
@@ -23,6 +32,23 @@ const ManagerCard = ({manager, full, hover, main} : {manager: Manager, full: boo
               </>
             )}
         </CardBody>
+        <CardFooter className='flex gap-5 justify-end'>
+          <UpdateManagerModal>
+            <UpdateManagerForm manager={manager}/>
+          </UpdateManagerModal>
+          {!manager.user ? (
+            <RegisterManagerModal>
+              <RegisterManagerForm id={manager.managerId} email={manager.managerEmail}/>
+            </RegisterManagerModal>
+          ) : (
+            <ChangeManagerPasswordModal>
+              <ChangeManagerPasswordForm id={manager.user.userId} email={manager.managerEmail}/>
+            </ChangeManagerPasswordModal>
+          )}
+          {userRole[0] === "Admin" && (
+            <DeleteManagerButton id={manager.managerId}/>
+          )}
+        </CardFooter>
     </Card>
   )
 }

@@ -7,8 +7,10 @@ import UpdateProviderModal from '../../../_components/UpdateProviderModal'
 import UpdateProviderForm from '../../../_components/UpdateProviderForm'
 import DeleteProviderForm from '../../../_components/DeleteProviderButton'
 import DeleteProviderModal from '../../../_components/DeleteProviderModal'
+import { getUserRoles } from '@/helpers/getUserRoles'
 
 const ProviderProductsPage = async({params} : {params: {id : string}}) => {
+  const userRole = getUserRoles()
   const response = await fetch(`${API_URL}/providers/${params.id}`, {
     headers: {...authHeaders()},
     next: {
@@ -22,14 +24,16 @@ const ProviderProductsPage = async({params} : {params: {id : string}}) => {
             <div className='w-[500px]'>
                 <ProviderCard provider={providerData} full={true} hover={false} main={true}/>
             </div>
-            <div className='flex gap-5 flex-col mt-5'>
+            {userRole[0] !== "Employee" && (
+              <div className='flex gap-5 flex-col mt-5'>
                 <UpdateProviderModal>
                     <UpdateProviderForm provider={providerData}/>
                 </UpdateProviderModal>
                 <DeleteProviderModal>
                   <DeleteProviderForm provider={providerData}/>
                 </DeleteProviderModal>
-            </div>
+              </div>
+            )} 
         </div>
       <div className='h-1 bg-rose-500 m-5 w-11/12'></div>
       <div className='w-full grid grid-cols-6 overflow-hidden overflow-y-auto mx-5'>

@@ -7,8 +7,10 @@ import DeleteLocationButton from './_components/DeleteLocationButton'
 import authHeaders from '@/helpers/authHeaders'
 import UpdateLocation from './_components/UpdateLocation'
 import FormUpdateLocation from './_components/FormUpdateLocation'
+import { getUserRoles } from '@/helpers/getUserRoles'
 
 const LocationsPage = async ({searchParams} : {searchParams: {[key: string] : string | string[] | undefined}}) => {
+  const userRole = getUserRoles()
   const response = await fetch(`${API_URL}/locations`, {
     headers: {
       ...authHeaders()
@@ -29,12 +31,14 @@ const LocationsPage = async ({searchParams} : {searchParams: {[key: string] : st
             {searchParams.store ? (
               <>
                 <LocationCard store={searchParams.store}/>
-                <div className='w-full flex justify-end mt-5 gap-5'>
-                  <DeleteLocationButton store={searchParams.store}/>
-                  <UpdateLocation>
-                    <FormUpdateLocation store={searchParams.store}/>
-                  </UpdateLocation>
-                </div>
+                {userRole[0] !== "Employee" && (
+                  <div className='w-full flex justify-end mt-5 gap-5'>
+                    <DeleteLocationButton store={searchParams.store}/>
+                    <UpdateLocation>
+                      <FormUpdateLocation store={searchParams.store}/>
+                    </UpdateLocation>
+                  </div>
+                )}
               </>
               
             ) : (

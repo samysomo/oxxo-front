@@ -1,6 +1,7 @@
 import React from 'react'
 import { LuPopsicle, LuStore, LuTruck, LuUser, LuUsers } from 'react-icons/lu'
 import NavItem from './NavItem'
+import { getUserRoles } from '@/helpers/getUserRoles'
 
 const Sidebar = () => {
   return (
