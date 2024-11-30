@@ -1,8 +1,7 @@
-"use server"
 import { Card, CardBody, CardFooter, CardHeader, Divider } from '@nextui-org/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import UpdateEmployeeModal from './UpdateEmployeeModal'
 import UpdateEmployeeForm from './UpdateEmployeeForm'
 import DeleteEmployeeModal from './DeleteEmployeeModal'
@@ -11,10 +10,11 @@ import RegisterEmployeeModal from './RegisterEmployeeModal'
 import RegisterEmployeeForm from './RegisterEmployeeForm'
 import ChangeEmployeePasswordModal from './ChangeEmployeePasswordModal'
 import ChangeEmployeePasswordForm from './ChangeEmployeePasswordForm'
+import { getUserRolesClient } from '@/helpers/decodeTokenClient'
 import { getUserRoles } from '@/helpers/getUserRoles'
 
-const EmployeeCard = ({employee, full, hover, main} : {employee: Employee, full: boolean, hover: boolean, main: boolean}) => {
-  const userRole = getUserRoles()
+const EmployeeCard = ({employee, full, hover, main, userRole} : {employee: Employee, full: boolean, hover: boolean, main: boolean, userRole: string}) => {
+  
   return (
     <Card className={`m-6 w-[200px] text-center ${hover ? "hover:scale-110 hover:bg-rose-200" : ""} ${main ? "text-3xl h-[50vh] w-[550px] my-5" : ""}`} key={employee.employeeId}>
         <CardHeader className=''>
@@ -46,7 +46,7 @@ const EmployeeCard = ({employee, full, hover, main} : {employee: Employee, full:
         </CardBody>
         {main && (
           <CardFooter className='flex gap-5 justify-end'>
-            {userRole[0] !== "Manager" && (
+            {userRole !== "Manager" && (
               <UpdateEmployeeModal>
                 <UpdateEmployeeForm employee={employee}/>
               </UpdateEmployeeModal>
@@ -60,10 +60,10 @@ const EmployeeCard = ({employee, full, hover, main} : {employee: Employee, full:
                 <ChangeEmployeePasswordForm id={employee.user.userId} email={employee.employeeEmail}/>
               </ChangeEmployeePasswordModal>
             )}
-            {userRole[0] !== "Employee" && (
+            {userRole !== "Employee" && (
               <DeleteEmployeeModal>
-              <DeleteEmployeeForm employee={employee}/>
-            </DeleteEmployeeModal>
+                <DeleteEmployeeForm employee={employee}/>
+              </DeleteEmployeeModal>
             )}
           </CardFooter>
         )}

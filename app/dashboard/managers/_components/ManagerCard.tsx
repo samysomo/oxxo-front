@@ -33,21 +33,26 @@ const ManagerCard = ({manager, full, hover, main} : {manager: Manager, full: boo
             )}
         </CardBody>
         <CardFooter className='flex gap-5 justify-end'>
-          <UpdateManagerModal>
-            <UpdateManagerForm manager={manager}/>
-          </UpdateManagerModal>
-          {!manager.user ? (
-            <RegisterManagerModal>
-              <RegisterManagerForm id={manager.managerId} email={manager.managerEmail}/>
-            </RegisterManagerModal>
-          ) : (
-            <ChangeManagerPasswordModal>
-              <ChangeManagerPasswordForm id={manager.user.userId} email={manager.managerEmail}/>
-            </ChangeManagerPasswordModal>
+          {main && (
+            <>
+              <UpdateManagerModal>
+                <UpdateManagerForm manager={manager}/>
+              </UpdateManagerModal>
+              {!manager.user ? (
+                <RegisterManagerModal>
+                  <RegisterManagerForm id={manager.managerId} email={manager.managerEmail}/>
+                </RegisterManagerModal>
+              ) : (
+                <ChangeManagerPasswordModal>
+                  <ChangeManagerPasswordForm id={manager.user.userId} email={manager.managerEmail}/>
+                </ChangeManagerPasswordModal>
+              )}
+              {userRole[0] === "Admin" && (
+                <DeleteManagerButton id={manager.managerId}/>
+              )}
+            </>
           )}
-          {userRole[0] === "Admin" && (
-            <DeleteManagerButton id={manager.managerId}/>
-          )}
+          
         </CardFooter>
     </Card>
   )

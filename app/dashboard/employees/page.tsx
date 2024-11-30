@@ -56,7 +56,7 @@ const EmployeesPage = async () => {
   const employeeData : Employee = await responseEmployee.json()
     return (
       <div className='w-10/12 h-[90vh] flex items-center justify-center'>
-        <EmployeeCard employee={employeeData} main={true} hover={false} full={true}/>
+        <EmployeeCard employee={employeeData} main={true} hover={false} full={true} userRole={userRole[0]}/>
       </div>
     )
   }

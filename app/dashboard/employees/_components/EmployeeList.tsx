@@ -1,10 +1,19 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import EmployeeCard from './EmployeeCard'
 import { Select, SelectItem } from '@nextui-org/react'
+import { getUserRolesClient } from '@/helpers/decodeTokenClient'
 
 const EmployeeList = ({employees, locations} : {employees : Employee[], locations : LocationEntity[]}) => {
     const [store, setStore] = useState("")
+    const [userRole, setUserRole] = useState("")
+    useEffect(() => {
+      const getRole = () => {
+        const role = getUserRolesClient()
+        setUserRole(role[0])
+      }
+      getRole()
+    }, [])
   return (
     <div className=''>
         <div className='w-full h-[150px] flex items-center justify-center'>
@@ -31,7 +40,7 @@ const EmployeeList = ({employees, locations} : {employees : Employee[], location
             {employees
                 .filter((employee : Employee) => store === "" ? true : (employee.location?.locationId.toString() === store))
                 .map((employee) => (
-                    <EmployeeCard key={employee.employeeId} employee={employee} full={false} hover={true} main={false}/>
+                    <EmployeeCard key={employee.employeeId} employee={employee} full={false} hover={true} main={false} userRole={userRole}/>
             ))}
         </div>
     </div>

@@ -31,7 +31,7 @@ const LocationsPage = async ({searchParams} : {searchParams: {[key: string] : st
             {searchParams.store ? (
               <>
                 <LocationCard store={searchParams.store}/>
-                {userRole[0] !== "Employee" && (
+                {userRole[0] === "Admin" && (
                   <div className='w-full flex justify-end mt-5 gap-5'>
                     <DeleteLocationButton store={searchParams.store}/>
                     <UpdateLocation>
