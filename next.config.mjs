@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images:{
-        domains: ["nest-oxxo-test.s3.amazonaws.com"]
+        remotePatterns: [{
+            protocol: 'https',
+            hostname: "nest-oxxo-test.s3.amazonaws.com"
+        }]
     }
 };
 
