@@ -1,7 +1,6 @@
 import { Card, CardBody, CardFooter, CardHeader, Divider } from '@nextui-org/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
 import UpdateEmployeeModal from './UpdateEmployeeModal'
 import UpdateEmployeeForm from './UpdateEmployeeForm'
 import DeleteEmployeeModal from './DeleteEmployeeModal'
@@ -10,8 +9,6 @@ import RegisterEmployeeModal from './RegisterEmployeeModal'
 import RegisterEmployeeForm from './RegisterEmployeeForm'
 import ChangeEmployeePasswordModal from './ChangeEmployeePasswordModal'
 import ChangeEmployeePasswordForm from './ChangeEmployeePasswordForm'
-import { getUserRolesClient } from '@/helpers/decodeTokenClient'
-import { getUserRoles } from '@/helpers/getUserRoles'
 
 const EmployeeCard = ({employee, full, hover, main, userRole} : {employee: Employee, full: boolean, hover: boolean, main: boolean, userRole: string}) => {
   

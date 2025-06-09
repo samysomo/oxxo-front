@@ -1,7 +1,7 @@
 "use client"
-import { TOKEN_NAME } from "@/constants";
 import { jwtDecode } from "jwt-decode";
 
+const TOKEN_NAME = process.env.TOKEN_NAME
 
 export interface JwtPayload {
     userEmail: string;
@@ -21,7 +21,7 @@ export const getClientCookies = () => {
 
 export const getUserRolesClient = () => {
     const cookies = getClientCookies()
-    const token = cookies[TOKEN_NAME]
+    const token = cookies[TOKEN_NAME!]
     if (!token) return []
     try {
         const decodedToken = jwtDecode<JwtPayload>(token)
@@ -34,7 +34,7 @@ export const getUserRolesClient = () => {
 
 export const getUserIdClient = () => {
     const cookies = getClientCookies()
-    const token = cookies[TOKEN_NAME]
+    const token = cookies[TOKEN_NAME!]
     if (!token) return ""
     try {
         const decodedToken = jwtDecode<JwtPayload>(token)

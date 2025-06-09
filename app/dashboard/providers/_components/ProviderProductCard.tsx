@@ -1,6 +1,5 @@
 import { Card, CardBody, CardHeader, Divider } from '@nextui-org/react'
 import Link from 'next/link'
-import React from 'react'
 
 const ProviderProductCard = ({product, hover, main} : {product: Product, hover: boolean, main: boolean}) => {
   return (

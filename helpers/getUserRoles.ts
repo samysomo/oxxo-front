@@ -1,7 +1,7 @@
-import { TOKEN_NAME } from "@/constants";
 import { jwtDecode } from "jwt-decode";
-import { cookies } from "next/headers";
+import { cookies } from "next/headers"; 
 
+const TOKEN_NAME = process.env.TOKEN_NAME
 
 export interface JwtPayload {
   userEmail: string;
@@ -9,7 +9,7 @@ export interface JwtPayload {
 }
 
 export const getUserRoles = () => {
-  const token = cookies().get(TOKEN_NAME)?.value
+  const token = cookies().get(TOKEN_NAME!)?.value
   if(!token) return []
   try {
     const decodedToken = jwtDecode<JwtPayload>(token)

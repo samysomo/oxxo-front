@@ -1,5 +1,3 @@
-import { API_URL} from '@/constants'
-import React from 'react'
 import SelectLocation from './_components/SelectLocation'
 import LocationCard from './_components/LocationCard'
 import FormNewLocation from './_components/FormNewLocation'
@@ -8,6 +6,8 @@ import authHeaders from '@/helpers/authHeaders'
 import UpdateLocation from './_components/UpdateLocation'
 import FormUpdateLocation from './_components/FormUpdateLocation'
 import { getUserRoles } from '@/helpers/getUserRoles'
+
+const API_URL = process.env.API_URL
 
 const LocationsPage = async ({searchParams} : {searchParams: {[key: string] : string | string[] | undefined}}) => {
   const userRole = getUserRoles()

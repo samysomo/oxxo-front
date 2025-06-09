@@ -1,7 +1,4 @@
-import { API_URL } from '@/constants'
 import { Button, Input } from '@nextui-org/react'
-import React from 'react'
-import authHeaders from '@/helpers/authHeaders'
 import { updateProduct } from '@/actions/products/update'
 import SelectProvider from './SelectProvider'
 

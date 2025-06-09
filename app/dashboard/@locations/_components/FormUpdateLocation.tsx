@@ -1,9 +1,9 @@
-import { API_URL } from '@/constants'
 import { Button, Input } from '@nextui-org/react'
-import React from 'react'
 import SelectManager from './SelectManager'
 import authHeaders from '@/helpers/authHeaders'
 import { updateLocation } from '@/actions/locations/update'
+
+const API_URL = process.env.API_URL
 
 const FormUpdateLocation = async({store} : {store: string | string[] | undefined}) => {
     if(!store || store === undefined || typeof store === "object") return null

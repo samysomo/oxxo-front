@@ -1,6 +1,5 @@
 "use client"
 import { Select, SelectItem } from '@nextui-org/react'
-import React, { ReactNode } from 'react'
 
 const SelectStore = ({stores, defaultStore, notDisabled} : {stores : LocationEntity[], defaultStore? : number | undefined, notDisabled : boolean} ) => {
     console.log(stores)

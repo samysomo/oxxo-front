@@ -1,7 +1,6 @@
 "use client"
 import { Select, SelectItem } from '@nextui-org/react'
 import { useRouter } from 'next/navigation'
-import React from 'react'
 
 const SelectLocation = ({locations, store} : {locations : LocationEntity[], store: string | string[] | undefined}) => {
     const router = useRouter()

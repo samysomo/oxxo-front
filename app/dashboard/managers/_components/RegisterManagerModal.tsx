@@ -1,6 +1,6 @@
 "use client"
 import {Modal, ModalContent, ModalBody, Button, useDisclosure} from "@nextui-org/react";
-import { LuLogIn, LuPaperclip, LuPlus } from "react-icons/lu";
+import { LuLogIn } from "react-icons/lu";
 
 export default function RegisterManagerModal({children} : {children : React.ReactNode}) {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();

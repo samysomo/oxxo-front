@@ -1,6 +1,4 @@
-import { API_URL } from '@/constants'
 import authHeaders from '@/helpers/authHeaders'
-import React from 'react'
 import ProviderCard from '../../../_components/ProviderCard'
 import ProviderProductCard from '../../../_components/ProviderProductCard'
 import UpdateProviderModal from '../../../_components/UpdateProviderModal'
@@ -8,6 +6,8 @@ import UpdateProviderForm from '../../../_components/UpdateProviderForm'
 import DeleteProviderForm from '../../../_components/DeleteProviderButton'
 import DeleteProviderModal from '../../../_components/DeleteProviderModal'
 import { getUserRoles } from '@/helpers/getUserRoles'
+
+const API_URL = process.env.API_URL
 
 const ProviderProductsPage = async({params} : {params: {id : string}}) => {
   const userRole = getUserRoles()

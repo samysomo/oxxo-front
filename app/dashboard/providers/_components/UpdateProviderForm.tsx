@@ -1,8 +1,5 @@
-import { API_URL } from '@/constants'
 import { Button, Input } from '@nextui-org/react'
 import React from 'react'
-import authHeaders from '@/helpers/authHeaders'
-import { updateManager } from '@/actions/managers/update'
 import { updateProvider } from '@/actions/providers/update'
 
 const UpdateProviderForm = async({provider} : {provider : Provider}) => {

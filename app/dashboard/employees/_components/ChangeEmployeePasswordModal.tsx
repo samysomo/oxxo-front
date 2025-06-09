@@ -1,7 +1,6 @@
 "use client"
 import {Modal, ModalContent, ModalBody, Button, useDisclosure} from "@nextui-org/react";
-import { FaLock } from "react-icons/fa";
-import { LuFileLock, LuLock, LuLogIn, LuPaperclip, LuPlus } from "react-icons/lu";
+import { LuLock } from "react-icons/lu";
 
 export default function ChangeEmployeePasswordModal({children} : {children : React.ReactNode}) {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();

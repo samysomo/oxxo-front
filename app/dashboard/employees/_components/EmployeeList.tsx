@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import EmployeeCard from './EmployeeCard'
 import { Select, SelectItem } from '@nextui-org/react'
 import { getUserRolesClient } from '@/helpers/decodeTokenClient'

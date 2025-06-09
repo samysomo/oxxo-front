@@ -1,4 +1,3 @@
-import { API_URL } from '@/constants'
 import authHeaders from '@/helpers/authHeaders'
 import React from 'react'
 import CreateEmployeeModal from './_components/CreateEmployeeModal'
@@ -7,6 +6,8 @@ import EmployeeList from './_components/EmployeeList'
 import { getUserRoles } from '@/helpers/getUserRoles'
 import EmployeeCard from './_components/EmployeeCard'
 import { getUserEmail } from '@/helpers/getUserEmail'
+
+const API_URL = process.env.API_URL
 
 const EmployeesPage = async () => {
   const userRole = getUserRoles()

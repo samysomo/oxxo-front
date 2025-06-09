@@ -1,6 +1,5 @@
 import deleteManager from '@/actions/managers/delete'
 import { Button } from '@nextui-org/react'
-import React from 'react'
 import { LuTrash2 } from 'react-icons/lu'
 
 const DeleteManagerButton = ({id} : {id: string | string[]}) => {

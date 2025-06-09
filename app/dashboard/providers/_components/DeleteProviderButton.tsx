@@ -1,6 +1,5 @@
 import deleteProvider from '@/actions/providers/delete'
 import { Button } from '@nextui-org/react'
-import React from 'react'
 
 const DeleteProviderForm = ({provider} : {provider: Provider}) => {
   const deleteProviderWithId = deleteProvider.bind(null, provider.providerId)

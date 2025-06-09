@@ -1,9 +1,7 @@
-
-import React from 'react'
-import FilteredProducts from './_components/FilteredProducts'
 import authHeaders from '@/helpers/authHeaders'
-import { API_URL } from '@/constants'
 import CreateProductForm from './_components/CreateProductForm'
+
+const API_URL = process.env.API_URL
 
 const ProductsPage = async () => {
 

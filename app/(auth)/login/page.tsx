@@ -1,10 +1,10 @@
 "use client"
-import { API_URL } from '@/constants'
-import authHeaders from '@/helpers/authHeaders'
 import { Button, Input, Spinner } from '@nextui-org/react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import { useState } from 'react'
+
+const API_URL = process.env.API_URL
 
 const Login = () => {
     const [submitting, setSetsubmitting] = useState(false)

@@ -1,9 +1,9 @@
-import { API_URL } from '@/constants'
 import { Button, Input } from '@nextui-org/react'
-import React from 'react'
 import authHeaders from '@/helpers/authHeaders'
 import { createManager } from '@/actions/managers/create'
 import SelectStore from './SelectStore'
+
+const API_URL = process.env.API_URL
 
 const CreateManagerForm = async() => {
 

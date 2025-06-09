@@ -1,6 +1,5 @@
 "use client"
 import { Select, SelectItem } from '@nextui-org/react'
-import React from 'react'
 
 type SelectManagerProps = {
     managers : Manager[], 

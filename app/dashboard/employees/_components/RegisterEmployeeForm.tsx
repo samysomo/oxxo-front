@@ -1,10 +1,6 @@
 "use client"
-import { createEmployee } from '@/actions/employee/create'
 import { Button, Input } from '@nextui-org/react'
 import React, { useState } from 'react'
-import SelectStore from '../../managers/_components/SelectStore'
-import { API_URL } from '@/constants'
-import authHeaders from '@/helpers/authHeaders'
 import registerEmployee from '@/actions/employee/users/register-employee'
 import { LuEye, LuLock } from 'react-icons/lu'
 import { generate } from 'generate-password'

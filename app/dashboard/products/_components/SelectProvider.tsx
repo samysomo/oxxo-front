@@ -1,6 +1,5 @@
 "use client"
 import { Select, SelectItem } from '@nextui-org/react'
-import React, { ReactNode } from 'react'
 
 const SelectProvider = ({providers, defaultProvider} : {providers : Provider[], defaultProvider? : string | undefined}) => {
   return (

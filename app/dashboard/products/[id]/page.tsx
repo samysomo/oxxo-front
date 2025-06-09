@@ -1,4 +1,3 @@
-import { API_URL } from '@/constants'
 import authHeaders from '@/helpers/authHeaders'
 import React from 'react'
 import ProductCard from '../_components/ProductCard'
@@ -7,6 +6,8 @@ import UpdateProductForm from '../_components/UpdateProductForm'
 import DeleteProductModal from '../_components/DeleteProductModal'
 import DeleteProductForm from '../_components/DeleteProductForm'
 import { getUserRoles } from '@/helpers/getUserRoles'
+
+const API_URL = process.env.API_URL
 
 const ProductPage = async ({params} : {params: {id : string}}) => {
   const userRole = getUserRoles()

@@ -1,9 +1,9 @@
-import { API_URL} from '@/constants'
 import authHeaders from '@/helpers/authHeaders'
 import { getUserRoles } from '@/helpers/getUserRoles'
 import { Card, CardBody, CardHeader, Divider } from '@nextui-org/react'
 import Link from 'next/link'
-import React from 'react'
+
+const API_URL = process.env.API_URL
 
 const LocationCard = async ({store}: {store: string | string[] | undefined}) => {
     const userRole = getUserRoles()

@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import ProductCard from './ProductCard'
 import { Input, Select, SelectItem } from '@nextui-org/react'
 

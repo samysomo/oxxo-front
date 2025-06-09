@@ -1,6 +1,5 @@
 import deleteEmployee from '@/actions/employee/delete'
 import { Button } from '@nextui-org/react'
-import React from 'react'
 
 const DeleteEmployeeForm = ({employee} : {employee : Employee}) => {
   const deleteEmployeeWithId = deleteEmployee.bind(null, employee.employeeId)

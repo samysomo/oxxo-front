@@ -1,12 +1,11 @@
-import { API_URL } from '@/constants'
 import authHeaders from '@/helpers/authHeaders'
 import React from 'react'
 import ManagerCard from './_components/ManagerCard'
 import { Card } from '@nextui-org/react'
 import { getUserRoles } from '@/helpers/getUserRoles'
 import { getUserEmail } from '@/helpers/getUserEmail'
-import UpdateManagerModal from './_components/UpdateManagerModal'
-import UpdateManagerForm from './_components/UpdateManagerForm'
+
+const API_URL = process.env.API_URL
 
 const ManagersPage = async () => {
     const userRole = getUserRoles()

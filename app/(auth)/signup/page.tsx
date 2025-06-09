@@ -1,7 +1,5 @@
 import { Button, Input } from '@nextui-org/react'
-import { div } from 'framer-motion/client'
 import Link from 'next/link'
-import React from 'react'
 
 const Signup = () => {
   return (

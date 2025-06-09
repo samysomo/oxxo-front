@@ -1,9 +1,10 @@
-import { API_URL } from "@/constants";
 import authHeaders from "@/helpers/authHeaders";
 import ProviderCard from "../_components/ProviderCard";
 import CreateProviderModal from "../_components/CreateProviderModal";
 import CreateProviderForm from "../_components/CreateProviderForm";
 import { getUserRoles } from "@/helpers/getUserRoles";
+
+const API_URL = process.env.API_URL
 
 export default async function ProvidersLayout({
     children,

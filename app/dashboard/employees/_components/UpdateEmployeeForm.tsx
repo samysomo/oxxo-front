@@ -1,9 +1,9 @@
 import { Button, Input } from '@nextui-org/react'
-import React from 'react'
 import { updateEmployee } from '@/actions/employee/update'
-import { API_URL } from '@/constants'
 import authHeaders from '@/helpers/authHeaders'
 import SelectStore from '../../managers/_components/SelectStore'
+
+const API_URL = process.env.API_URL
 
 const UpdateEmployeeForm = async({employee} : {employee : Employee}) => {
   const responseStores = await fetch(`${API_URL}/locations`, {

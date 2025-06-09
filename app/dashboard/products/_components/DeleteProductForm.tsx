@@ -1,7 +1,5 @@
 import deleteProduct from '@/actions/products/delete'
-import deleteProvider from '@/actions/providers/delete'
 import { Button } from '@nextui-org/react'
-import React from 'react'
 
 const DeleteProductForm = ({product} : {product : Product}) => {
   const deleteProductWithId = deleteProduct.bind(null, product.productId)

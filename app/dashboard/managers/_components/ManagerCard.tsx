@@ -1,6 +1,5 @@
-import { Card, CardBody, CardFooter, CardHeader, Divider, user } from '@nextui-org/react'
+import { Card, CardBody, CardFooter, CardHeader, Divider } from '@nextui-org/react'
 import Link from 'next/link'
-import React from 'react'
 import UpdateManagerModal from './UpdateManagerModal'
 import UpdateManagerForm from './UpdateManagerForm'
 import RegisterManagerModal from './RegisterManagerModal'

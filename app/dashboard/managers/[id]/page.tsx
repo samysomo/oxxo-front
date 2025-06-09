@@ -1,15 +1,9 @@
-import { API_URL } from '@/constants'
 import authHeaders from '@/helpers/authHeaders'
 import React from 'react'
 import ManagerCard from '../_components/ManagerCard'
-import DeleteManagerButton from '../_components/DeleteManagerButton'
-import UpdateManagerModal from '../_components/UpdateManagerModal'
-import UpdateManagerForm from '../_components/UpdateManagerForm'
-import RegisterManagerModal from '../_components/RegisterManagerModal'
-import RegisterManagerForm from '../_components/RegisterManagerForm'
-import ChangeManagerPasswordModal from '../_components/ChangeManagerPasswordModal'
-import ChangeManagerPasswordForm from '../_components/ChangeManagerPasswordForm'
 import { getUserRoles } from '@/helpers/getUserRoles'
+
+const API_URL = process.env.API_URL
 
 const ManagerPage = async ({params} : {params: {id : string}}) => {
   const userRole = getUserRoles()

@@ -1,6 +1,7 @@
 "use server"
-import { API_URL } from "@/constants"
 import authHeaders from "@/helpers/authHeaders"
+
+const API_URL = process.env.API_URL
 
 export default async function registerManager(managerId : string, formData : FormData) {
     let data : any = {}

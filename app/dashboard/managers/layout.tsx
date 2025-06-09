@@ -1,9 +1,10 @@
-import { API_URL } from "@/constants";
 import authHeaders from "@/helpers/authHeaders";
 import ManagerCard from "./_components/ManagerCard";
 import CreateManagerForm from "./_components/CreateManagerForm";
 import CreateManagerModal from "./_components/CreateManagerModal";
 import { getUserRoles } from "@/helpers/getUserRoles";
+
+const API_URL = process.env.API_URL
 
 export default async function ManagersLayout({
     children,

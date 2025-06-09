@@ -1,5 +1,5 @@
 "use client"
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
+import {Modal, ModalContent, ModalBody, Button, useDisclosure} from "@nextui-org/react";
 
 export default function UpdateLocation({children} : {children : React.ReactNode}) {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();

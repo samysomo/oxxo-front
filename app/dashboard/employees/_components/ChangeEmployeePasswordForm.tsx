@@ -1,7 +1,6 @@
 "use client"
-import { createEmployee } from '@/actions/employee/create'
 import { Button, Input } from '@nextui-org/react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { LuEye, LuLock } from 'react-icons/lu'
 import { generate } from 'generate-password'
 import updateEmployeeUser from '@/actions/employee/users/update-employee'

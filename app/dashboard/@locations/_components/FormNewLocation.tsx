@@ -1,10 +1,10 @@
 import { createLocation } from '@/actions/locations/create'
-import { API_URL } from '@/constants'
 import { Button, Input } from '@nextui-org/react'
-import React from 'react'
 import SelectManager from './SelectManager'
 import authHeaders from '@/helpers/authHeaders'
 import { getUserRoles } from '@/helpers/getUserRoles'
+
+const API_URL = process.env.API_URL
 
 const FormNewLocation = async() => {
   const userRole = getUserRoles()

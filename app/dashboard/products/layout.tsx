@@ -1,7 +1,8 @@
-import { API_URL } from '@/constants'
 import authHeaders from '@/helpers/authHeaders'
 import React from 'react'
 import FilteredProducts from './_components/FilteredProducts'
+
+const API_URL = process.env.API_URL
 
 const ProductsLayout = async ({children} : {children: React.ReactNode}) => {
     const response = await fetch(`${API_URL}/products`, {
